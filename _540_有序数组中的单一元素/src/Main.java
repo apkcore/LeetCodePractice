@@ -27,6 +27,8 @@
  * <p>
  * 二：
  * 做为上面方法的改进版，把确定mid的值时，定义取mid索引index必做为偶数，当mid=mid+1时，lo=mid+2,否则hi=mid
+ *
+ * https://mp.weixin.qq.com/s/408y7B_fZ1DT7WXBboEi-Q
  */
 public class Main {
 
@@ -50,6 +52,31 @@ public class Main {
                 lo = mid + 2;
             } else {
                 hi = mid;
+            }
+        }
+        return nums[lo];
+    }
+
+    public int singleNonDuplicate2(int[] nums) {
+        int lo = 0;
+        int hi = nums.length - 1;
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            boolean halvesAreEven = (hi - mid) % 2 == 0;
+            if (nums[mid + 1] == nums[mid]) {
+                if (halvesAreEven) {
+                    lo = mid + 2;
+                } else {
+                    hi = mid - 1;
+                }
+            } else if (nums[mid - 1] == nums[mid]) {
+                if (halvesAreEven) {
+                    hi = mid - 2;
+                } else {
+                    lo = mid + 1;
+                }
+            } else {
+                return nums[mid];
             }
         }
         return nums[lo];
