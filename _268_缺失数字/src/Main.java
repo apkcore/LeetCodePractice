@@ -20,6 +20,7 @@
  * <p>
  * 题解：
  * 我们可以经他补一个完整的数序列，通过一直异或，最后剩下的就是那个缺失的数
+ * https://mp.weixin.qq.com/s/WBXkHdm-Vm-Wwn5hsI9Ryw
  */
 
 public class Main {
