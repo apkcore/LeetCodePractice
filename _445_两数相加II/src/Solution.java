@@ -26,29 +26,37 @@ import java.util.Stack;
  * -----------------------------------------------------------------------------
  * <p>
  * 解析：
- * 这个题其实很简单，就是计算时要保证最右边对齐，也就是后进先出，依次放入两个栈，再从栈中取值相加，用一个变量flag来表示是否有进位
+ * 1.不使用进阶版，就是先将链表反转再相加，形成的新链表使用头插
+ * 2。不能反转时，这个题其实很简单，就是计算时要保证最右边对齐，也就是后进先出，依次放入两个栈，再从栈中取值相加，用一个变量flag来表示是否有进位
  */
 
 public class Solution {
     public static void main(String[] args) {
-
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         Stack<Integer> stack1 = new Stack<>();
         Stack<Integer> stack2 = new Stack<>();
 
-        while (l1.next != null) {
+        while (l1 != null) {
             stack1.push(l1.val);
-            l1=l1.next;
+            l1 = l1.next;
         }
-        while (l2.next != null) {
-            stack1.push(l2.val);
-            l2=l2.next;
+        while (l2 != null) {
+            stack2.push(l2.val);
+            l2 = l2.next;
         }
-        boolean flag = false;
-        while (!stack1.empty()&&!stack2.empty()){
+        int flag = 0;
+        ListNode head = null;
+        while (!stack1.isEmpty() || !stack2.isEmpty() || flag > 0) {
+            int sum = flag;
+            sum += (stack1.isEmpty() ? 0 : stack1.pop()) + (stack2.isEmpty() ? 0 : stack2.pop());
+            ListNode node = new ListNode(sum % 10);
+            node.next = head;
+            head = node;
+            flag = sum / 10;
 
         }
+        return head;
     }
 }
