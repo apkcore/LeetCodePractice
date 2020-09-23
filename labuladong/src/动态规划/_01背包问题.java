@@ -1,5 +1,10 @@
 package 动态规划;
 
+/**
+ * https://blog.csdn.net/Rex_WUST/article/details/89336939
+ * https://blog.csdn.net/chanmufeng/article/details/82955730
+ * https://mp.weixin.qq.com/s/RXfnhSpVBmVneQjDSUSAVQ
+ */
 public class _01背包问题 {
 
     public static void main(String[] args) {
